@@ -1,4 +1,4 @@
-# generator-egzpo [![Build Status](https://secure.travis-ci.org/Fouppy/generator-egzpo.png?branch=master)](https://travis-ci.org/Fouppy/generator-egzpo)  [![devDependency Status](https://david-dm.org/Fouppy/generator-egzpo/dev-status.png)](https://david-dm.org/Fouppy/generator-egzpo#info=devDependencies)
+# generator-egzpo [![Build Status](https://secure.travis-ci.org/Fouppy/generator-egzpo.png?branch=master)](https://travis-ci.org/Fouppy/generator-egzpo)  [![Dependency Status](https://david-dm.org/Fouppy/generator-egzpo.png)](https://david-dm.org/Fouppy/generator-egzpo)  [![devDependency Status](https://david-dm.org/Fouppy/generator-egzpo/dev-status.png)](https://david-dm.org/Fouppy/generator-egzpo#info=devDependencies)
 
 A generator for [Yeoman](http://yeoman.io).
 
