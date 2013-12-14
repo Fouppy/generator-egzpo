@@ -1,0 +1,47 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+  UI Designer: Florent Peineau
+  UI Developer: Frédéric Honoré
+  Site: http://egztudio.com/
+  Contacts: fhonore[at]egztudio[dot]com, fpeineau[at]egztudio[dot]com
+  Location: Eaubonne & Paris, France
+
+# THANKS
+
+  HTML5 BoilerPlate: http://html5boilerplate.com/	
+
+# TECHNOLOGY COLOPHON
+
+  Standards: HTML5, CSS3 - SASS, Compass
+  Components: Modernizr, jQuery
+  Softwares: Photoshop, Sublime Text 2, Fire.app
+
+					   
+					  `.--------------`                       
+				   -::-`             `.-:-`                   
+				.::`                     `-:-`                
+			  ./-                           `::               
+			 -+`                              `/.             
+			  `::.                              ::            
+				 .::`                            ::           
+				   `-:-                           /.          
+					`/.::.                        `+          
+				   ./`   .:-`                      /.         
+				  `+`      `-:-                    :-         
+				  /.          .::.                 :.         
+				 `+              .:-`              +`         
+				 ./                `-:-           ./          
+				 ./                   .::.        +.`         
+				 `+                      -:-`    //::-.       
+				  /`                       `::.`+/::::::`     
+				  `/                          ./+/::::::-     
+				   -:                            -//:::::`    
+					-:                             `://:.     
+					 ./.                              .+.     
+					   -:.                           .:-      
+						 -:-`                     `-:.   `.`  
+						   `-:-.`             `-::-`     -::` 
+							   `--------------.`          `   

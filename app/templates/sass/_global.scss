@@ -1,0 +1,258 @@
+/*
+ * HTML5 Boilerplate
+ *
+ * What follows is the result of much research on cross-browser styling.
+ * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
+ * Kroc Camen, and the H5BP dev community and team.
+ */
+
+ /*
+ * Box Sizing
+ *
+ * Set that shit to border-box, yo. And fix those pesky pseudo elements
+ */
+
+/* ==========================================================================
+   Border-box all the things!
+   ========================================================================== */
+*,
+:before,
+:after {
+  box-sizing: $boxModel;
+}
+
+/* ==========================================================================
+   Base styles: opinionated defaults
+   ========================================================================== */
+
+.clearfix {
+  @include clearfix();
+}
+
+/*
+ * Remove text-shadow in selection highlight: h5bp.com/i
+ * These selection rule sets have to be separate.
+ * Customize the background color to match your design.
+ */
+
+::-moz-selection {
+    background: $selectionColor;
+    text-shadow: none;
+}
+
+::selection {
+    background: $selectionColor;
+    text-shadow: none;
+}
+
+/*
+ * A better looking default horizontal rule
+ */
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid $hrBorder;
+    margin: 1em 0;
+    padding: 0;
+}
+
+/*
+ * Remove the gap between images and the bottom of their containers: h5bp.com/i/440
+ */
+
+img {
+    vertical-align: middle;
+}
+
+/*
+ * Remove default fieldset styles.
+ */
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+/*
+ * Allow only vertical resizing of textareas.
+ */
+
+textarea {
+    resize: vertical;
+}
+
+/* GENERAL */
+body {
+  font-family: $baseFontFamily;
+  @include rem(font-size, $baseFontSize);
+  @include rem(line-height, $baseLineHeight);
+  color: $textColor;
+  background-color: $white;
+}
+
+a {
+  color: $linkColor;
+  text-decoration: none;
+}
+a:hover {
+  color: $linkColorHover;
+  text-decoration: underline;
+}
+
+// BODY TEXT
+// ---------
+
+p {
+  margin: 0 0 $baseLineHeight / 2;
+  font-family: $baseFontFamily;
+  @include rem(font-size, $baseFontSize);
+  @include rem(line-height, $baseLineHeight);
+  small {
+    @include rem(font-size, $baseFontSize - 2);
+    color: $grayLight;
+  }
+}
+
+// HEADINGS
+// --------
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-weight: bold;
+  color: $grayDark;
+  text-rendering: optimizelegibility;
+  small {
+    font-weight: normal;
+    color: $grayLight;
+  }
+}
+h1 {
+  @include rem(font-size, 30px);
+  @include rem(line-height, $baseLineHeight * 2);
+  small {
+    @include rem(font-size, 18px);
+  }
+}
+h2 {
+  @include rem(font-size, 24px);
+  @include rem(line-height, $baseLineHeight * 2);
+  small {
+    @include rem(font-size, 18px);
+  }
+}
+h3 {
+  @include rem(line-height, $baseLineHeight * 1.5);
+  @include rem(font-size, 18px);
+  small {
+    @include rem(font-size, 14px);
+  }
+}
+h4,
+h5,
+h6 {
+  @include rem(line-height, $baseLineHeight);
+}
+h4 {
+  @include rem(font-size, 14px);
+  small {
+    @include rem(font-size, 12px);
+  }
+}
+h5 {
+  @include rem(font-size, 12px);
+}
+h6 {
+  @include rem(font-size, 11px);
+  color: $grayLight;
+  text-transform: uppercase;
+}
+
+// LISTS
+// -----
+
+// Unordered and Ordered lists
+
+dl,
+menu,
+ol,
+ul {
+  padding: 0;
+  margin: 0 0 $baseLineHeight / 2 25px;
+}
+dl {
+  margin-bottom: $baseLineHeight;
+}
+dt,
+dd {
+  line-height: $baseLineHeight;
+}
+dt {
+  font-weight: bold;
+}
+dd {
+  margin: 0 0 0 $baseLineHeight / 2;
+}
+menu,
+ol,
+ul {
+  padding: 0 0 0 40px;
+}
+ul ul,
+ul ol,
+ol ol,
+ol ul {
+  margin-bottom: 0;
+}
+ul {
+  list-style: disc;
+}
+ol {
+  list-style: decimal;
+}
+li {
+  line-height: $baseLineHeight;
+}
+nav ul,
+nav ol {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  list-style-image: none;
+}
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+
+/* Alignment */
+.alignleft {
+	display: inline;
+	float: left;
+	margin-right: 1.5em;
+}
+.alignright {
+	display: inline;
+	float: right;
+	margin-left: 1.5em;
+}
+.aligncenter {
+	clear: both;
+	display: block;
+	margin: 0 auto;
+}
+
+/* Text meant only for screen readers */
+.assistive-text {
+	clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+	clip: rect(1px, 1px, 1px, 1px);
+	position: absolute !important;
+}

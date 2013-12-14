@@ -1,0 +1,345 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-07-08 16:55+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;__;_e\n"
+"X-Poedit-Basepath: ../\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 1.5.7\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPath-1: ./templates\n"
+"X-Poedit-SearchPath-2: ./lib\n"
+
+#: 404.php:4
+msgid "Sorry, but the page you were trying to view does not exist."
+msgstr ""
+
+#: 404.php:7
+msgid "It looks like this was the result of either:"
+msgstr ""
+
+#: 404.php:9
+msgid "a mistyped address"
+msgstr ""
+
+#: 404.php:10
+msgid "an out-of-date link"
+msgstr ""
+
+#: base.php:4
+msgid ""
+"You are using an <strong>outdated</strong> browser. Please <a href=\"http://"
+"browsehappy.com/\">upgrade your browser</a> to improve your experience."
+msgstr ""
+
+#: index.php:5
+msgid "Sorry, no results were found."
+msgstr "Désolé, aucun résultat n'a été trouvé."
+
+#: index.php:17
+msgid "&larr; Older posts"
+msgstr "&larr; Articles plus anciens"
+
+#: index.php:18
+msgid "Newer posts &rarr;"
+msgstr "Articles plus récents &rarr;"
+
+#: lib/activation.php:28 lib/activation.php:29
+msgid "Theme Activation"
+msgstr "Activation du thème"
+
+#: lib/activation.php:51
+#, php-format
+msgid "%s Theme Activation"
+msgstr "Activation du thème %s"
+
+#: lib/activation.php:62 lib/activation.php:64
+msgid "Create static front page?"
+msgstr "Créer une page d'accueil ?"
+
+#: lib/activation.php:66 lib/activation.php:79 lib/activation.php:92
+#: lib/activation.php:105 lib/activation.php:118
+msgid "Yes"
+msgstr "Oui"
+
+#: lib/activation.php:67 lib/activation.php:80 lib/activation.php:93
+#: lib/activation.php:106 lib/activation.php:119
+msgid "No"
+msgstr "Non"
+
+#: lib/activation.php:70
+msgid "Create a page called Home and set it to be the static front page"
+msgstr "Créer une page \"Home\" et la définir comme page d'accueil statique ?"
+
+#: lib/activation.php:75
+msgid "Change permalink structure?"
+msgstr "Modifier la structure des permaliens ?"
+
+#: lib/activation.php:77
+msgid "Update permalink structure?"
+msgstr "Mettre à jour la structure des permaliens ?"
+
+#: lib/activation.php:83
+msgid "Change permalink structure to /&#37;postname&#37;/"
+msgstr "Changer la structure permaliens en /&#37;postname&#37;/"
+
+#: lib/activation.php:88
+msgid "Change uploads folder?"
+msgstr "Changer le dossier d'upload ?"
+
+#: lib/activation.php:90
+msgid "Update uploads folder?"
+msgstr "Mettre à jour le dossier d'upload ?"
+
+#: lib/activation.php:96
+#, fuzzy
+msgid "Change uploads folder to /media/ instead of /wp-content/uploads/"
+msgstr ""
+"Changer le dossier d'upload en /assets/ à la place de /wp-content/uploads/"
+
+#: lib/activation.php:101 lib/activation.php:103
+msgid "Create navigation menu?"
+msgstr "Créer un menu de navigation ?"
+
+#: lib/activation.php:109
+msgid "Create the Primary Navigation menu and set the location"
+msgstr "Créer le menus de navigation primaire et définir sa position"
+
+#: lib/activation.php:114 lib/activation.php:116
+msgid "Add pages to menu?"
+msgstr "Ajouter les pages au menu ?"
+
+#: lib/activation.php:122
+msgid "Add all current published pages to the Primary Navigation"
+msgstr ""
+"Ajouter toutes les pages actuellement publiées à la navigation primaire"
+
+#: lib/cleanup.php:210
+msgid "Continued"
+msgstr "Suite"
+
+#: lib/init.php:11
+msgid "Primary Navigation"
+msgstr "Navigation Primaire"
+
+#: lib/titles.php:10
+msgid "Latest Posts"
+msgstr "Derniers Articles"
+
+#: lib/titles.php:19
+#, php-format
+msgid "Daily Archives: %s"
+msgstr "Archives quotidiennes : %s"
+
+#: lib/titles.php:21
+#, php-format
+msgid "Monthly Archives: %s"
+msgstr "Archives mensuelles : %s"
+
+#: lib/titles.php:23
+#, php-format
+msgid "Yearly Archives: %s"
+msgstr "Archives annuelles : %s"
+
+#: lib/titles.php:26
+#, php-format
+msgid "Author Archives: %s"
+msgstr "Archives d'auteurs : %s"
+
+#: lib/titles.php:31
+#, php-format
+msgid "Search Results for %s"
+msgstr "Résultats de la recherche pour %s"
+
+#: lib/titles.php:33
+#, fuzzy
+msgid "Not Found"
+msgstr "Fichier non trouvé"
+
+#: lib/widgets.php:8
+#, fuzzy
+msgid "Primary"
+msgstr "Barre latérale Primaire"
+
+#: lib/widgets.php:17
+msgid "Footer"
+msgstr "Pied de page"
+
+#: lib/widgets.php:45
+msgid "Use this widget to add a vCard"
+msgstr "Utiliser ce widget pour ajouter une vCard"
+
+#: lib/widgets.php:47
+msgid "Egzpo: vCard"
+msgstr "Egzpo : vCard"
+
+#: lib/widgets.php:74
+msgid "vCard"
+msgstr "vCard"
+
+#: templates/comment.php:4
+#, php-format
+msgid "%1$s"
+msgstr "%1$s"
+
+#: templates/comment.php:5
+msgid "(Edit)"
+msgstr "(Editer)"
+
+#: templates/comment.php:9
+msgid "Your comment is awaiting moderation."
+msgstr "Votre commentaire est en attente de modération."
+
+#: templates/comments.php:18
+msgid "&larr; Older comments"
+msgstr "&larr; Commentaires plus anciens"
+
+#: templates/comments.php:21
+msgid "Newer comments &rarr;"
+msgstr "Commentaires plus récents &rarr;"
+
+#: templates/comments.php:29 templates/comments.php:38
+msgid "Comments are closed."
+msgstr "Les commentaires sont fermés."
+
+#: templates/comments.php:45
+msgid "Leave a Reply"
+msgstr "Répondre"
+
+#: templates/comments.php:45
+#, php-format
+msgid "Leave a Reply to %s"
+msgstr "Répondre à %s"
+
+#: templates/comments.php:48
+#, php-format
+msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
+msgstr ""
+"Vous devez être <a href=\"%s\">connecté</a> pour ajouter un commentaire."
+
+#: templates/comments.php:53
+#, php-format
+msgid "Logged in as <a href=\"%s/wp-admin/profile.php\">%s</a>."
+msgstr "Connecté en tant que <a href=\"%s/wp-admin/profile.php\">%s</a>."
+
+#: templates/comments.php:54
+msgid "Log out of this account"
+msgstr "Déconnexion de ce compte"
+
+#: templates/comments.php:54
+msgid "Log out &raquo;"
+msgstr "Déconnexion &raquo;"
+
+#: templates/comments.php:57
+msgid "Name"
+msgstr "Nom"
+
+#: templates/comments.php:57 templates/comments.php:59
+msgid " (required)"
+msgstr " (obligatoire)"
+
+#: templates/comments.php:59
+msgid "Email (will not be published)"
+msgstr "Email (ne sera pas publié)"
+
+#: templates/comments.php:61
+msgid "Website"
+msgstr "Site web"
+
+#: templates/comments.php:64
+msgid "Comment"
+msgstr "Commentaire"
+
+#: templates/comments.php:66
+msgid "Submit Comment"
+msgstr "Ajouter un commentaire"
+
+#: templates/content-single.php:11
+msgid "Pages:"
+msgstr "Pages :"
+
+#: templates/entry-meta.php:2
+msgid "By"
+msgstr ""
+
+#: templates/searchform.php:2
+msgid "Search for:"
+msgstr "Rechercher pour :"
+
+#: templates/searchform.php:3 templates/searchform.php:4
+msgid "Search"
+msgstr "Recherche"
+
+#~ msgid ""
+#~ "The page you are looking for might have been removed, had its name "
+#~ "changed, or is temporarily unavailable."
+#~ msgstr ""
+#~ "La page demandée a changé de nom ou est temporairement inaccessible."
+
+#~ msgid "Please try the following:"
+#~ msgstr "Veuillez essayer les actions suivantes :"
+
+#~ msgid "Check your spelling"
+#~ msgstr "Vérifiez votre syntaxe"
+
+#~ msgid "Return to the <a href=\"%s\">home page</a>"
+#~ msgstr "Revenir à la <a href=\"%s\">page d'accueil</a>"
+
+#~ msgid "Click the <a href=\"javascript:history.back()\">Back</a> button"
+#~ msgstr ""
+#~ "Cliquer sur le bouton <a href=\"javascript:history.back()\">Retour</a>"
+
+#~ msgid "Please make sure your <a href=\"%s\">.htaccess</a> file is writable "
+#~ msgstr ""
+#~ "Veuillez vérifier que votre fichier <a href=\"%s\">.htaccess</a> soit "
+#~ "accessible en écriture"
+
+#~ msgid "<cite class=\"fn\">%s</cite>"
+#~ msgstr "<cite class=\"fn\">%s</cite>"
+
+#~ msgid ""
+#~ "This post is password protected. Enter the password to view comments."
+#~ msgstr ""
+#~ "Cet article est protégé par mot de passe. Entrez le mot de passe pour "
+#~ "voir les commentaires."
+
+#~ msgid "One Response to &ldquo;%2$s&rdquo;"
+#~ msgid_plural "%1$s Responses to &ldquo;%2$s&rdquo;"
+#~ msgstr[0] "Une réponse à &ldquo;%2$s&rdquo;"
+#~ msgstr[1] "%1$s résponses à &ldquo;%2$s&rdquo;"
+
+#~ msgid "Posted on %s at %s."
+#~ msgstr "Publié le %s à %s."
+
+#~ msgid "Written by"
+#~ msgstr "Rédigé par"
+
+#~ msgid "Title (optional):"
+#~ msgstr "Titre (facultatif) :"
+
+#~ msgid "Street Address:"
+#~ msgstr "Rue :"
+
+#~ msgid "City/Locality:"
+#~ msgstr "Ville/Localité :"
+
+#~ msgid "State/Region:"
+#~ msgstr "État/Région :"
+
+#~ msgid "Zipcode/Postal Code:"
+#~ msgstr "Code Postal :"
+
+#~ msgid "Telephone:"
+#~ msgstr "Téléphone :"
+
+#~ msgid "Email:"
+#~ msgstr "Email :"
