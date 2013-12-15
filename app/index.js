@@ -73,6 +73,11 @@ EgzpoGenerator.prototype.git = function git() {
   this.copy('gitignore', '.gitignore');
 };
 
+EgzpoGenerator.prototype.md = function md() {
+  this.copy('README.md', 'README.md');
+  this.copy('TODO.md', 'TODO.md');
+};
+
 EgzpoGenerator.prototype.bower = function bower() {
   this.copy('_bower.json', 'bower.json');
 };
