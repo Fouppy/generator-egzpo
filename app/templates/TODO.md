@@ -4,12 +4,13 @@
 * Create [favicons](https://github.com/jonrandahl/H5BP-Multi-Layer-FavIcons)
 * Update infos in package.json
 <% if (includeHumans) { %>
-* Update infos in humans.txt
+* Update infos in app/humans.txt
 <% } %>
 <% if (includeLogo) { %>
-* Update logo.svg
+* Update app/img/logo.svg
 <% } %>
 * Deploy [Travis](https://travis-ci.org/)
-* Update infos in main.js
-* Update infos in style.css
+* Update infos in app/assets/js/main.js
+* Update infos in app/style.css
+* Update infos in app/tempaltes/head.php
 * Go code!
