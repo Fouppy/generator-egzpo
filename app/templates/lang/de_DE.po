@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: roots\n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
-"Last-Translator: Nikolas Grottendieck <github@nikolasgrottendieck.com>\n"
+"Last-Translator: Philipp Meier <phimei@gmx.ch>\n"
 "Language-Team: roots\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -15,7 +15,7 @@ msgstr ""
 #: 404.php:4
 msgid "Sorry, but the page you were trying to view does not exist."
 msgstr ""
-"Es tut uns leid aber die Seite die du angucken wollten existiert nicht."
+"Es tut uns leid aber die Seite die du angucken wolltest existiert nicht."
 
 #: 404.php:7
 msgid "It looks like this was the result of either:"
@@ -121,7 +121,7 @@ msgstr ""
 
 #: lib/cleanup.php:210
 msgid "Continued"
-msgstr "Forgesetzt"
+msgstr "Weiterlesen"
 
 #: lib/init.php:11
 msgid "Primary Navigation"
