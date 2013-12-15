@@ -5,33 +5,33 @@
 function egzpo_title() {
   if (is_home()) {
     if (get_option('page_for_posts', true)) {
-      echo get_the_title(get_option('page_for_posts', true));
+      return get_the_title(get_option('page_for_posts', true));
     } else {
-      _e('Latest Posts', 'egzpo');
+      return __('Latest Posts', 'egzpo');
     }
   } elseif (is_archive()) {
     $term = get_term_by('slug', get_query_var('term'), get_query_var('taxonomy'));
     if ($term) {
-      echo apply_filters('single_term_title', $term->name);
+      return apply_filters('single_term_title', $term->name);
     } elseif (is_post_type_archive()) {
-      echo apply_filters('the_title', get_queried_object()->labels->name);
+      return apply_filters('the_title', get_queried_object()->labels->name);
     } elseif (is_day()) {
-      printf(__('Daily Archives: %s', 'egzpo'), get_the_date());
+      return sprintf(__('Daily Archives: %s', 'egzpo'), get_the_date());
     } elseif (is_month()) {
-      printf(__('Monthly Archives: %s', 'egzpo'), get_the_date('F Y'));
+      return sprintf(__('Monthly Archives: %s', 'egzpo'), get_the_date('F Y'));
     } elseif (is_year()) {
-      printf(__('Yearly Archives: %s', 'egzpo'), get_the_date('Y'));
+      return sprintf(__('Yearly Archives: %s', 'egzpo'), get_the_date('Y'));
     } elseif (is_author()) {
       $author = get_queried_object();
-      printf(__('Author Archives: %s', 'egzpo'), $author->display_name);
+      return sprintf(__('Author Archives: %s', 'egzpo'), $author->display_name);
     } else {
-      single_cat_title();
+      return single_cat_title('', false);
     }
   } elseif (is_search()) {
-    printf(__('Search Results for %s', 'egzpo'), get_search_query());
+    return sprintf(__('Search Results for %s', 'egzpo'), get_search_query());
   } elseif (is_404()) {
-    _e('Not Found', 'egzpo');
+    return __('Not Found', 'egzpo');
   } else {
-    the_title();
+    return get_the_title();
   }
 }
