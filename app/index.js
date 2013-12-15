@@ -32,6 +32,10 @@ EgzpoGenerator.prototype.askFor = function askFor() {
   }
 
   var prompts = [{
+    name: 'userName',
+    message: 'What is your GitHub username?'
+  },
+  {
     name: 'themeName',
     message: 'What do you want to call your theme?',
     default: 'eGzpo'
@@ -40,11 +44,18 @@ EgzpoGenerator.prototype.askFor = function askFor() {
     name: 'includeLogo',
     message: 'Would you like to support rel=logo?',
     default: true
+  }, {
+    type: 'confirm',
+    name: 'includeHumans',
+    message: 'Would you like to include humans.txt?',
+    default: true
   }];
 
   this.prompt(prompts, function (props) {
+    this.userName = props.userName;
     this.themeName = props.themeName;
     this.includeLogo = props.includeLogo;
+    this.includeHumans = props.includeHumans;
 
     cb();
   }.bind(this));
@@ -119,6 +130,9 @@ EgzpoGenerator.prototype.app = function app() {
   this.copy('404.php', 'app/404.php');
   this.copy('base.php', 'app/base.php');
   this.copy('functions.php', 'app/functions.php');
+  if (this.includeHumans) {
+    this.copy('humans.txt', 'app/humans.txt');
+  }
   this.copy('index.php', 'app/index.php');
   this.copy('page.php', 'app/page.php');
   this.copy('screenshot.png', 'app/screenshot.png');
