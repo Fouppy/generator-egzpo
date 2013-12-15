@@ -14,9 +14,9 @@
 
   <div class="wrap container" role="document">
     <div class="content grid">
-      <div class="main <?php echo egzpo_main_class(); ?>" role="main">
+      <main class="main <?php echo egzpo_main_class(); ?>" role="main">
         <?php include egzpo_template_path(); ?>
-      </div><!-- /.main -->
+      </main><!-- /.main -->
       <?php if (egzpo_display_sidebar()) : ?>
         <aside class="sidebar <?php echo egzpo_sidebar_class(); ?>" role="complementary">
           <?php include egzpo_sidebar_path(); ?>
