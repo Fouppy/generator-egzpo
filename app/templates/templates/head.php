@@ -10,6 +10,9 @@
 
 	<link href='//ajax.googleapis.com' rel='dns-prefetch' />
 	<link href='<?php echo get_stylesheet_directory_uri(); ?>/humans.txt' rel='author' type='text/plain' />
+    <% if (includeHumans) { %>
+	<link href='<?php echo get_stylesheet_directory_uri(); ?>/humans.txt' rel='author' type='text/plain' />
+    <% } %>
     <% if (includeLogo) { %>
 	<link href='<?php echo get_stylesheet_directory_uri(); ?>/assets/img/logo.svg' rel='logo' type='image/svg' />
     <% } %>

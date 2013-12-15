@@ -1,9 +1,9 @@
 {
   "name": "<%= _.slugify(themeName) %>",
   "version": "0.0.1",
-  "description": "éGzpo is a WordPress starter theme based on HTML5 Boilerplate & Roots",
-  "homepage": "https://github.com/Fouppy/egzpo",
-  "bugs": "https://github.com/Fouppy/egzpo/issues",
+  "description": "<%= _.slugify(themeName) %> is a WordPress starter theme based on HTML5 Boilerplate & Roots",
+  "homepage": "https://github.com/<%= _.slugify(userName) %>/<%= _.slugify(themeName) %>",
+  "bugs": "https://github.com/<%= _.slugify(userName) %>/<%= _.slugify(themeName) %>/issues",
   "author": {
     "name": "Frédéric Honoré",
     "email": "fred.honore@gmail.com",
@@ -11,7 +11,7 @@
   },
   "repository": { 
     "type" : "git",
-    "url" : "http://github.com/Fouppy/egzpo.git"
+    "url" : "http://github.com/<%= _.slugify(userName) %>/<%= _.slugify(themeName) %>.git"
   },
   "engines": {
     "node": ">= 0.10.0"
