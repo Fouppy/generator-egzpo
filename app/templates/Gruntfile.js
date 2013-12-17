@@ -29,11 +29,11 @@ module.exports = function (grunt) {
         watch: {
             compass: {
                 files: ['<%%= yeoman.app %>/sass/{,*/}*.{scss,sass}'],
-                tasks: ['compass', 'autoprefixer', 'version']
+                tasks: ['compass', 'autoprefixer', 'version', 'csslint']
             },
             js: {
                 files: '<%= jshint.all %>',
-                tasks: ['uglify', 'version']
+                tasks: ['uglify', 'version', 'jshint']
             },
             livereload: {
                 options: {
