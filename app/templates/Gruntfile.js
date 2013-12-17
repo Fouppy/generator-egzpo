@@ -19,45 +19,48 @@ module.exports = function (grunt) {
         yeoman: {
             // Configurable paths
             app: 'app',
-            dist: 'dist'
-            //../../www/wordpress-default/wp-content/themes/<%= pkg.name %>
+            dist: 'dist',
+            tmp: '.tmp'
         },
 
         pkg: grunt.file.readJSON('package.json'),
+
+        // Watches files for changes and runs tasks based on the changed files
         watch: {
             compass: {
-                files: ['sass/{,*/}*.{scss,sass}'],
-                tasks: ['compass', 'autoprefixer', 'csso', 'csslint', 'version', 'shell']
+                files: ['<%%= yeoman.app %>/sass/{,*/}*.{scss,sass}'],
+                tasks: ['compass', 'autoprefixer', 'version']
             },
             js: {
                 files: '<%= jshint.all %>',
-                tasks: ['jshint', 'uglify', 'version', 'shell']
+                tasks: ['uglify', 'version']
             },
             livereload: {
-                // Browser live reloading
-                // https://github.com/gruntjs/grunt-contrib-watch#live-reloading
                 options: {
-                    livereload: false
+                    livereload: true
                 },
                 files: [
-                    '<%%= yeoman.dist %>/assets/css/app.css',
-                    '<%%= yeoman.dist %>/assets/js/scripts.min.js',
-                    '<%%= yeoman.dist %>/templates/*.php',
-                    '*.php'
+                    '<%%= yeoman.dist %>/assets/css/{,*/}*.css',
+                    '<%%= yeoman.dist %>/assets/js/{,*/}*.js'
                 ]
             }
         },
+
+        // Empties folders to start fresh
         clean: {
             dist: {
                 files: [{
                     dot: true,
                     src: [
-                        '.tmp/*',
-                        '<%%= yeoman.dist %>/*'
+                        '<%%= yeoman.tmp %>/**/*',
+                        '<%%= yeoman.dist %>/**',
+                        '!<%%= yeoman.tmp %>/reports/**'
                     ]
                 }]
             }
         },
+
+        // Make sure code styles are up to par and there are no obvious mistakes
         jshint: {
             options: {
                 jshintrc: '.jshintrc'
@@ -65,8 +68,8 @@ module.exports = function (grunt) {
             all: [
                 'Gruntfile.js',
                 '<%%= yeoman.app %>/assets/js/{,*/}*.js',
-                '!<%%= yeoman.app %>assets/js/vendor/*',
-                '!<%%= yeoman.app %>/assets/js/plugins/*'
+                '!<%%= yeoman.app %>/assets/js/plugins/*',
+                '!<%%= yeoman.dist %>/assets/js/{,*/}*.js'
             ]
         },
         csslint: {
@@ -80,46 +83,57 @@ module.exports = function (grunt) {
                 src: ['<%%= yeoman.dist %>/assets/css/app.css']
             }
         },
-        uglify: {
+
+        // Compiles Sass to CSS and generates necessary files if requested
+        compass: {
             options: {
-                banner: '/*! <%= _.slugify(themeName) %> <%= (new Date).toISOString().split('T')[0] %> */\n'
+                sassDir: '<%%= yeoman.app %>/sass',
+                cssDir: '<%%= yeoman.dist %>/assets/css',
+                generatedImagesDir: '<%%= yeoman.tmp %>/assets/img/generated',
+                imagesDir: '<%%= yeoman.app %>/assets/img',
+                javascriptsDir: '<%%= yeoman.app %>/assets/js',
+                fontsDir: '<%%= yeoman.app %>/assets/fonts',
+                importPath: 'bower_components',
+                httpImagesPath: '/assets/img',
+                httpGeneratedImagesPath: '/assets/img/generated',
+                httpFontsPath: '/assets/fonts',
+                relativeAssets: false,
+                assetCacheBuster: false
             },
             dist: {
                 options: {
-                    sourceMap: '<%%= yeoman.dist %>/assets/js/map/source-map.js',
-                    sourceMappingURL: 'map/source-map.js'
-                },
-                files: {
-                    '.tmp/assets/js/scripts.min.js': [
-                        '<%%= yeoman.app %>/assets/js/plugins/*.js',
-                        '<%%= yeoman.app %>/assets/js/main.js'
-                    ]
+                    generatedImagesDir: '<%%= yeoman.dist %>/images/generated'
                 }
-            }
-        },
-        compass: {
-            dist: {
+            },
+            server: {
                 options: {
-                    sassDir: '<%%= yeoman.app %>/sass',
-                    cssDir: '.tmp',
-                    imagesDir: '<%%= yeoman.app %>/assets/img',
-                    javascriptsDir: '<%%= yeoman.app %>/assets/js',
-                    fontsDir: '<%%= yeoman.app %>/assets/fonts',
-                    outputStyle: 'compressed',
-                    generatedImagesDir: '.tmp/assets/img/generated',
-                    debugInfo: false
+                    debugInfo: true
                 }
             }
         },
-        modernizr: {
-            devFile: 'bower_components/modernizr/modernizr.js',
-            outputFile: '.tmp/assets/js/vendor/modernizr-custom.js',
-            files: [
-                '<%%= yeoman.app %>/assets/scripts/{,*/}*.js',
-                '<%%= yeoman.app %>/sass/{,*/}*.scss',
-                '!Gruntfile.js',
-                '!bower_components/{,*/}*.js'
-            ],
+
+        // Add vendor prefixed styles
+        autoprefixer: {
+            dist: {
+                files: [{
+                    expand: true,
+                    cwd: '<%%= yeoman.dist %>/assets/css',
+                    src: '{,*/}*.css',
+                    dest: '<%%= yeoman.dist %>/assets/css'
+                }]
+            }
+        },
+
+        // The following *-min tasks produce minified files in the dist folder
+        imagemin: {
+            dist: {
+                files: [{
+                    expand: true,
+                    cwd: '<%%= yeoman.app %>/assets/img',
+                    src: '{,*/}*.{gif,png,jpg,jpeg}',
+                    dest: '<%%= yeoman.dist %>/assets/img'
+                }]
+            }
         },
         svgmin: {
             dist: {
@@ -131,61 +145,65 @@ module.exports = function (grunt) {
                 }]
             }
         },
-        imagemin: {
+
+        // Uglifies script files
+        uglify: {
+            options: {
+                banner: '/*! <%= _.slugify(themeName) %> <%= (new Date).toISOString().split('T')[0] %> */\n'
+            },
             dist: {
-                files: [{
-                    expand: true,
-                    cwd: '<%%= yeoman.app %>/assets/img',
-                    src: '{,*/}*.{png,jpg,jpeg}',
-                    dest: '<%%= yeoman.dist %>/assets/img'
-                }]
-            }
-        },
-        concurrent: {
-            dist: [
-                'uglify',
-                'compass',
-                'modernizr',
-                'svgmin',
-                'imagemin'
-            ]
-        },
-        autoprefixer: {
-            singleFile: {
-                src: '.tmp/app.css',
-                dest: '.tmp/app.ai.css'
-            }
-        },
-        csso: {
-            compress: {
+                options: {
+                    sourceMap: '<%%= yeoman.dist %>/assets/js/map/source-map.js',
+                    sourceMappingURL: 'map/source-map.js'
+                },
                 files: {
-                    '.tmp/assets/css/app.css': ['.tmp/app.ai.css']
+                    '<%%= yeoman.dist %>/assets/js/scripts.min.js': [
+                        '<%%= yeoman.app %>/assets/js/plugins/*.js',
+                        '<%%= yeoman.app %>/assets/js/main.js'
+                    ]
                 }
             }
         },
+
+        // Generates a custom Modernizr build that includes only the tests you
+        // reference in your app
+        modernizr: {
+            devFile: 'bower_components/modernizr/modernizr.js',
+            outputFile: '<%%= yeoman.dist %>/assets/js/vendor/modernizr-custom.js',
+            files: [
+                '<%%= yeoman.dist %>/assets/js/{,*/}*.js',
+                '<%%= yeoman.dist %>/assets/css/{,*/}*.css',
+                '!Gruntfile.js',
+                '!<%%= yeoman.app %>/*',
+                '!<%%= yeoman.dist %>/assets/js/vendor/*'
+            ],
+            uglify: true
+        },
+
+        // Compress css files
+        // csso: {
+        //     compress: {
+        //         files: {
+        //             '<%%= yeoman.tmp %>/assets/css/app.css': ['<%%= yeoman.tmp %>/app.ai.css']
+        //         }
+        //     }
+        // },
+
+        // Renames files for browser caching purposes
         version: {
             options: {
-                file: '.tmp/lib/scripts.php',
-                css: '.tmp/assets/css/app.css',
+                file: '<%%= yeoman.dist %>/lib/scripts.php',
+                css: '<%%= yeoman.dist %>/assets/css/app.css',
                 cssHandle: 'egzpo_main',
-                js: '.tmp/assets/js/scripts.min.js',
+                js: '<%%= yeoman.dist %>/assets/js/scripts.min.js',
                 jsHandle: 'egzpo_scripts',
-                modernizr: '.tmp/assets/js/vendor/modernizr-custom.js',
+                modernizr: '<%%= yeoman.dist %>/assets/js/vendor/modernizr-custom.js',
                 jsModernizr: 'modernizr'
             }
         },
+
+        // Copies remaining files to places other tasks can use
         copy: {
-            scripts: {
-                files: [{
-                    expand: true,
-                    dot: true,
-                    cwd: '<%%= yeoman.app %>',
-                    dest: '.tmp',
-                    src: [
-                        'lib/scripts.php'
-                    ]
-                }]
-            },
             dist: {
                 files: [{
                     expand: true,
@@ -194,31 +212,21 @@ module.exports = function (grunt) {
                     dest: '<%%= yeoman.dist %>',
                     src: [
                         '*.{ico,png,txt,php,css}',
-                        '.htaccess',
-                        'assets/img/{,*/}*.{webp,gif,ico}',
-                        'assets/fonts/*',
-                        'assets/js/vendor/*',
+                        'assets/img/{,*/}*.{webp,ico}',
+                        'assets/fonts/{,*/}*.*',
                         'lang/*',
                         'lib/*',
                         'templates/*'
                     ]
                 }, {
                     expand: true,
-                    cwd: '.tmp/',
+                    cwd: '<%%= yeoman.tmp %>/',
                     dest: '<%%= yeoman.dist %>',
                     src: [
                         'assets/**/*',
                         'lib/*'
                     ]
                 },
-                // }, {
-                //     expand: true,
-                //     cwd: 'WORDPRESS_ROOT',
-                //     dest: '../../www/wordpress-default/',
-                //     src: [
-                //         '*.txt'
-                //     ]
-                // }, {
                 {
                     expand: true,
                     cwd: 'bower_components/jquery',
@@ -229,17 +237,30 @@ module.exports = function (grunt) {
                 }]
             }
         },
+
+        // Generate reports about script files
         plato: {
             complexity: {
                 options : {
                     jshint : grunt.file.readJSON('.jshintrc')
                 },
                 files: {
-                    '.tmp/reports/js-complexity': [
+                    '<%%= yeoman.tmp %>/reports/js-complexity': [
                         '<%%= yeoman.app %>/assets/js/{,*/}*.js'
                     ]
                 }
             }
+        },
+
+        // Run some tasks in parallel to speed up build process
+        concurrent: {
+            dist: [
+                'uglify',
+                'compass',
+                'modernizr',
+                'svgmin',
+                'imagemin'
+            ]
         }
     });
 
@@ -247,10 +268,8 @@ module.exports = function (grunt) {
         'clean',
         'concurrent',
         'autoprefixer',
-        'csso',
-        'copy:scripts',
-        'version',
-        'copy:dist'
+        'copy',
+        'version'
     ]);
 
     grunt.registerTask('default', [
