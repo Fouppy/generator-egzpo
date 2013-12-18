@@ -12,6 +12,9 @@ module.exports = function (grunt) {
     // Load grunt tasks automatically
     require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
+    // Time how long tasks take. Can help when optimizing build times
+    require('time-grunt')(grunt);
+
     // Define the configuration for all the tasks
     grunt.initConfig({
 
@@ -33,7 +36,7 @@ module.exports = function (grunt) {
             },
             js: {
                 files: '<%= jshint.all %>',
-                tasks: ['uglify', 'version', 'jshint']
+                tasks: ['uglify', 'version', 'newer:jshint']
             },
             livereload: {
                 options: {
@@ -53,8 +56,8 @@ module.exports = function (grunt) {
                     dot: true,
                     src: [
                         '<%%= yeoman.tmp %>/**/*',
-                        '<%%= yeoman.dist %>/**',
-                        '!<%%= yeoman.tmp %>/reports/**'
+                        '<%%= yeoman.dist %>/**'<% if (includePlato) { %>,
+                        '!<%%= yeoman.tmp %>/reports/**'<% } %>
                     ]
                 }]
             }
@@ -63,7 +66,8 @@ module.exports = function (grunt) {
         // Make sure code styles are up to par and there are no obvious mistakes
         jshint: {
             options: {
-                jshintrc: '.jshintrc'
+                jshintrc: '.jshintrc',
+                reporter: require('jshint-stylish')
             },
             all: [
                 'Gruntfile.js',
@@ -97,17 +101,17 @@ module.exports = function (grunt) {
                 httpImagesPath: '/assets/img',
                 httpGeneratedImagesPath: '/assets/img/generated',
                 httpFontsPath: '/assets/fonts',
+                outputStyle: 'nested',
                 relativeAssets: false,
-                assetCacheBuster: false
+                assetCacheBuster: false,
+                debugInfo: true
             },
-            dist: {
+            prod: {
                 options: {
-                    generatedImagesDir: '<%%= yeoman.dist %>/images/generated'
-                }
-            },
-            server: {
-                options: {
-                    debugInfo: true
+                    cssDir: '<%%= yeoman.tmp %>/assets/css',
+                    generatedImagesDir: '<%%= yeoman.dist %>/assets/img/generated',
+                    outputStyle: 'compressed',
+                    debugInfo: false
                 }
             }
         },
@@ -120,6 +124,14 @@ module.exports = function (grunt) {
                     cwd: '<%%= yeoman.dist %>/assets/css',
                     src: '{,*/}*.css',
                     dest: '<%%= yeoman.dist %>/assets/css'
+                }]
+            },
+            prod: {
+                files: [{
+                    expand: true,
+                    cwd: '<%%= yeoman.tmp %>/assets/css',
+                    src: '{,*/}*.css',
+                    dest: '<%%= yeoman.tmp %>/assets/css'
                 }]
             }
         },
@@ -154,7 +166,19 @@ module.exports = function (grunt) {
             dist: {
                 options: {
                     sourceMap: '<%%= yeoman.dist %>/assets/js/map/source-map.js',
-                    sourceMappingURL: 'map/source-map.js'
+                    sourceMappingURL: 'map/source-map.js'  // -- prod
+                },
+                files: {
+                    '<%%= yeoman.dist %>/assets/js/scripts.min.js': [
+                        '<%%= yeoman.app %>/assets/js/plugins/*.js',
+                        '<%%= yeoman.app %>/assets/js/main.js'
+                    ]
+                }
+            },
+            prod: {
+                options: {
+                    sourceMap: '',
+                    sourceMappingURL: ''
                 },
                 files: {
                     '<%%= yeoman.dist %>/assets/js/scripts.min.js': [
@@ -165,6 +189,7 @@ module.exports = function (grunt) {
             }
         },
 
+<% if (includeModernizr) { %>
         // Generates a custom Modernizr build that includes only the tests you
         // reference in your app
         modernizr: {
@@ -178,27 +203,29 @@ module.exports = function (grunt) {
                 '!<%%= yeoman.dist %>/assets/js/vendor/*'
             ],
             uglify: true
-        },
+        },<% } %>
 
         // Compress css files
-        // csso: {
-        //     compress: {
-        //         files: {
-        //             '<%%= yeoman.tmp %>/assets/css/app.css': ['<%%= yeoman.tmp %>/app.ai.css']
-        //         }
-        //     }
-        // },
+        csso: {
+            compress: {
+                files: {
+                    '<%%= yeoman.tmp %>/assets/css/app.css': ['<%%= yeoman.dist %>/assets/css/app.css']
+                }
+            }
+        },
 
         // Renames files for browser caching purposes
         version: {
-            options: {
-                file: '<%%= yeoman.dist %>/lib/scripts.php',
-                css: '<%%= yeoman.dist %>/assets/css/app.css',
-                cssHandle: 'egzpo_main',
-                js: '<%%= yeoman.dist %>/assets/js/scripts.min.js',
-                jsHandle: 'egzpo_scripts',
-                modernizr: '<%%= yeoman.dist %>/assets/js/vendor/modernizr-custom.js',
-                jsModernizr: 'modernizr'
+            assets: {
+                options: {
+                    rename: true
+                },
+                src: [
+                    '<%%= yeoman.dist %>/assets/css/app.css',
+                    '<%%= yeoman.dist %>/assets/js/scripts.min.js'<% if (includeModernizr) { %>,
+                    '<%%= yeoman.dist %>/assets/js/vendor/modernizr-custom.js'<% } %>
+                ],
+                dest: '<%%= yeoman.dist %>/lib/scripts.php'
             }
         },
 
@@ -238,6 +265,7 @@ module.exports = function (grunt) {
             }
         },
 
+<% if (includePlato) { %>
         // Generate reports about script files
         plato: {
             complexity: {
@@ -250,33 +278,49 @@ module.exports = function (grunt) {
                     ]
                 }
             }
-        },
+        },<% } %>
 
         // Run some tasks in parallel to speed up build process
         concurrent: {
             dist: [
-                'uglify',
-                'compass',
-                'modernizr',
+                'uglify:dist',
+                'compass:dist',<% if (includeModernizr) { %>
+                'modernizr',<% } %>
+                'svgmin',
+                'imagemin'
+            ],
+            prod: [
+                'uglify:prod',
+                'compass:prod',<% if (includeModernizr) { %>
+                'modernizr',<% } %>
                 'svgmin',
                 'imagemin'
             ]
         }
     });
 
-    grunt.registerTask('build', [
+    grunt.registerTask('default', [
         'clean',
-        'concurrent',
+        'concurrent:dist',
         'autoprefixer',
         'copy',
         'version'
     ]);
 
-    grunt.registerTask('default', [
-        'jshint',
-        'build',
-        'csslint',
-        'plato'
+    grunt.registerTask('prod', [
+        'clean',
+        'concurrent:prod',
+        'autoprefixer',
+        'csso',
+        'copy',
+        'version'
+    ]);
+
+    grunt.registerTask('report', [
+        'newer:jshint',
+        'default',
+        'csslint'<% if (includePlato) { %>,
+        'plato'<% } %>
     ]);
 
     grunt.registerTask('travis', [

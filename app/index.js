@@ -26,12 +26,10 @@ EgzpoGenerator.prototype.askFor = function askFor() {
   var cb = this.async();
 
   // welcome message
-  if (!this.options['skip-welcome-message']) {
-    console.log(this.yeoman);
-    console.log('Out of the box I include HTML5 Boilerplate, jQuery, Modernizr, Normalize and Typeplate.');
-  }
+  console.log(this.yeoman);
+  console.log('Out of the box I include HTML5 Boilerplate, jQuery, Normalize and Typeplate.'); // a modifier ?
 
-  var prompts = [{
+  var prompts = [{ // ajouter prompt pour readme
     name: 'userName',
     message: 'What is your GitHub username?'
   },
@@ -39,6 +37,16 @@ EgzpoGenerator.prototype.askFor = function askFor() {
     name: 'themeName',
     message: 'What do you want to call your theme?',
     default: 'eGzpo'
+  }, {
+    type: 'confirm',
+    name: 'includeModernizr',
+    message: 'Would you like to include Modernizr?',
+    default: true
+  }, {
+    type: 'confirm',
+    name: 'includePlato',
+    message: 'Would you like to include Plato?',
+    default: true
   }, {
     type: 'confirm',
     name: 'includeLogo',
@@ -52,8 +60,13 @@ EgzpoGenerator.prototype.askFor = function askFor() {
   }];
 
   this.prompt(prompts, function (props) {
+
+    // manually deal with the response, get back and store the results.
+    // we change a bit this way of doing to automatically do this in the self.prompt() method.
     this.userName = props.userName;
     this.themeName = props.themeName;
+    this.includeModernizr = props.includeModernizr;
+    this.includePlato = props.includePlato;
     this.includeLogo = props.includeLogo;
     this.includeHumans = props.includeHumans;
 
