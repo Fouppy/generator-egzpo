@@ -7,7 +7,9 @@
     "yeoman-egzpo",
     "generator-egzpo",
     "egzpo",
-    "roots"
+    "roots",
+    "wordpress",
+    "theme"
   ],
   "homepage": "https://github.com/Fouppy/generator-egzpo",
   "bugs": "https://github.com/Fouppy/generator-egzpo/issues",

@@ -27,7 +27,7 @@ EgzpoGenerator.prototype.askFor = function askFor() {
 
   // welcome message
   console.log(this.yeoman);
-  console.log('Out of the box I include HTML5 Boilerplate, jQuery, Normalize and Typeplate.'); // a modifier ?
+  console.log('Out of the box I include HTML5 Boilerplate, jQuery, Normalize and Typeplate.');
 
   var prompts = [{ // ajouter prompt pour readme
     name: 'userName',
