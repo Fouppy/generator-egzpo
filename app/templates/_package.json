@@ -43,5 +43,3 @@
     "test": "grunt travis --verbose"
   }
 }
-
-// + mocha +++
