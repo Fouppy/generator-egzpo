@@ -92,8 +92,6 @@ module.exports = function (grunt) {
         compass: {
             options: {
                 sassDir: '<%%= yeoman.app %>/sass',
-                cssDir: '<%%= yeoman.dist %>/assets/css',
-                generatedImagesDir: '<%%= yeoman.tmp %>/assets/img/generated',
                 imagesDir: '<%%= yeoman.app %>/assets/img',
                 javascriptsDir: '<%%= yeoman.app %>/assets/js',
                 fontsDir: '<%%= yeoman.app %>/assets/fonts',
@@ -101,15 +99,19 @@ module.exports = function (grunt) {
                 httpImagesPath: '/assets/img',
                 httpGeneratedImagesPath: '/assets/img/generated',
                 httpFontsPath: '/assets/fonts',
-                outputStyle: 'nested',
                 relativeAssets: false,
-                assetCacheBuster: false,
-                debugInfo: true
+                assetCacheBuster: false
+            },
+            dist: {
+                options: {
+                    cssDir: '<%%= yeoman.dist %>/assets/css',
+                    outputStyle: 'nested',
+                    debugInfo: true
+                }
             },
             prod: {
                 options: {
                     cssDir: '<%%= yeoman.tmp %>/assets/css',
-                    generatedImagesDir: '<%%= yeoman.dist %>/assets/img/generated',
                     outputStyle: 'compressed',
                     debugInfo: false
                 }
@@ -209,7 +211,7 @@ module.exports = function (grunt) {
         csso: {
             compress: {
                 files: {
-                    '<%%= yeoman.tmp %>/assets/css/app.css': ['<%%= yeoman.dist %>/assets/css/app.css']
+                    '<%%= yeoman.dist %>/assets/css/app.css': ['<%%= yeoman.tmp %>/assets/css/app.css']
                 }
             }
         },
@@ -244,14 +246,6 @@ module.exports = function (grunt) {
                         'lang/*',
                         'lib/*',
                         'templates/*'
-                    ]
-                }, {
-                    expand: true,
-                    cwd: '<%%= yeoman.tmp %>/',
-                    dest: '<%%= yeoman.dist %>',
-                    src: [
-                        'assets/**/*',
-                        'lib/*'
                     ]
                 },
                 {
