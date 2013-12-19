@@ -35,7 +35,7 @@ module.exports = function (grunt) {
                 tasks: ['compass:dist', 'autoprefixer:dist']
             },
             js: {
-                files: '<%%= jshint.all %>',
+                files: ['<%%= jshint.all %>'],
                 tasks: ['uglify', 'newer:jshint']
             },
             livereload: {
@@ -163,12 +163,12 @@ module.exports = function (grunt) {
         // Uglifies script files
         uglify: {
             options: {
-                banner: '/*! <%= _.slugify(themeName) %> <%%= (new Date).toISOString().split('T')[0] %> */\n'
+                banner: '/*! <%= _.slugify(themeName) %> <%%= grunt.template.today("dd-mm-yyyy") %> */\n'
             },
             dist: {
                 options: {
                     sourceMap: '<%%= yeoman.dist %>/assets/js/map/source-map.js',
-                    sourceMappingURL: 'map/source-map.js'  // -- prod
+                    sourceMappingURL: 'map/source-map.js'
                 },
                 files: {
                     '<%%= yeoman.dist %>/assets/js/scripts.min.js': [
