@@ -190,7 +190,6 @@ module.exports = function (grunt) {
                 }
             }
         },
-
 <% if (includeModernizr) { %>
         // Generates a custom Modernizr build that includes only the tests you
         // reference in your app
@@ -258,7 +257,6 @@ module.exports = function (grunt) {
                 }]
             }
         },
-
 <% if (includePlato) { %>
         // Generate reports about script files
         plato: {

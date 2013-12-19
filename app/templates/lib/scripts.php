@@ -7,8 +7,8 @@
  *
  * Enqueue scripts in the following order:
  * 1. jquery-1.10.2.min.js via Google CDN
- * 2. /theme/assets/js/vendor/modernizr-2.6.2.min.js
- * 3. /theme/assets/js/scripts.min.js (in footer)
+ * 2. /theme/assets/js/scripts.min.js (in footer)
+ <% if (includeModernizr) {* 3. /theme/assets/js/vendor/modernizr-custon.js<% } %>
  */
 function egzpo_scripts() {
   wp_enqueue_style('open_sans', 'http://fonts.googleapis.com/css?family=Source+Sans+Pro', false, null);
@@ -27,10 +27,10 @@ function egzpo_scripts() {
     wp_enqueue_script('comment-reply');
   }
 
-  wp_register_script('modernizr', get_template_directory_uri() . '/assets/js/vendor/modernizr-custom.js', false, null, false);
+  <% if (includeModernizr) {%>wp_register_script('modernizr', get_template_directory_uri() . '/assets/js/vendor/modernizr-custom.js', false, null, false);<% } %>
   wp_register_script('egzpo_scripts', get_template_directory_uri() . '/assets/js/scripts.min.js', false, null, true);
   wp_enqueue_script('jquery');
-  wp_enqueue_script('modernizr');
+  <% if (includeModernizr) {%>wp_enqueue_script('modernizr');<% } %>
   wp_enqueue_script('egzpo_scripts');
 }
 add_action('wp_enqueue_scripts', 'egzpo_scripts', 100);
