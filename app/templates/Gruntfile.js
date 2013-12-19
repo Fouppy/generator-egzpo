@@ -32,11 +32,11 @@ module.exports = function (grunt) {
         watch: {
             compass: {
                 files: ['<%%= yeoman.app %>/sass/{,*/}*.{scss,sass}'],
-                tasks: ['compass', 'autoprefixer', 'version', 'csslint']
+                tasks: ['compass:dist', 'autoprefixer:dist']
             },
             js: {
-                files: '<%= jshint.all %>',
-                tasks: ['uglify', 'version', 'newer:jshint']
+                files: '<%%= jshint.all %>',
+                tasks: ['uglify', 'newer:jshint']
             },
             livereload: {
                 options: {
@@ -163,7 +163,7 @@ module.exports = function (grunt) {
         // Uglifies script files
         uglify: {
             options: {
-                banner: '/*! <%= _.slugify(themeName) %> <%= (new Date).toISOString().split('T')[0] %> */\n'
+                banner: '/*! <%= _.slugify(themeName) %> <%%= (new Date).toISOString().split('T')[0] %> */\n'
             },
             dist: {
                 options: {
@@ -295,8 +295,7 @@ module.exports = function (grunt) {
         'clean',
         'concurrent:dist',
         'autoprefixer',
-        'copy',
-        'version'
+        'copy'
     ]);
 
     grunt.registerTask('prod', [
