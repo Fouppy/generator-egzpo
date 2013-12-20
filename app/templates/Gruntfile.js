@@ -23,7 +23,8 @@ module.exports = function (grunt) {
             // Configurable paths
             app: 'app',
             dist: 'dist',
-            tmp: '.tmp'
+            tmp: '.tmp',
+            ip: '127.0.0.1'
         },
 
         pkg: grunt.file.readJSON('package.json'),
@@ -46,6 +47,51 @@ module.exports = function (grunt) {
                     '<%%= yeoman.dist %>/assets/css/{,*/}*.css',
                     '<%%= yeoman.dist %>/assets/js/{,*/}*.js'
                 ]
+            }
+        },
+
+        // Synchronize all connected browsers
+        browser_sync: {
+            files: {
+                src : [
+                    '<%%= yeoman.dist %>/assets/css/{,*/}*.css',
+                    '<%%= yeoman.dist %>/assets/js/{,*/}*.js'
+                ]
+            },
+            options: {
+                host : '<%%= yeoman.ip %>',
+                watchTask: true,
+                ghostMode: {
+                    scroll: true,
+                    links: true,
+                    forms: true
+                }
+            }
+        },
+
+        // Conditionnally load livereload and browserSync scripts. Configure ports if needed
+        'string-replace': {
+            dist: {
+                files: {
+                    '<%%= yeoman.dist %>/base.php': '<%%= yeoman.app %>/base.php'
+                },
+                options: {
+                    replacements: [{
+                        pattern: '<!-- browserSync -->',
+                        replacement: '<script src="http://<%%= yeoman.ip %>:35729/livereload.js"></script><script src="http://<%%= yeoman.ip %>:3000/socket.io/socket.io.js"></script><script src="http://<%%= yeoman.ip %>:3001/browser-sync-client.min.js"></script>'
+                    }]
+                }
+            },
+            prod: {
+                files: {
+                  '<%%= yeoman.dist %>/base.php': '<%%= yeoman.app %>/base.php'
+                },
+                options: {
+                    replacements: [{
+                        pattern: '<!-- browserSync -->',
+                        replacement: ''
+                    }]
+                }
             }
         },
 
@@ -84,7 +130,7 @@ module.exports = function (grunt) {
                 options: {
                     import: false
                 },
-                src: ['<%%= yeoman.dist %>/assets/css/app.css']
+                src: ['<%%= yeoman.dist %>/assets/css/{,*/}*.css']
             }
         },
 
@@ -295,7 +341,8 @@ module.exports = function (grunt) {
         'clean',
         'concurrent:dist',
         'autoprefixer',
-        'copy'
+        'copy',
+        'string-replace:dist'
     ]);
 
     grunt.registerTask('prod', [
@@ -304,7 +351,8 @@ module.exports = function (grunt) {
         'autoprefixer',
         'csso',
         'copy',
-        'version'
+        'version',
+        'string-replace:prod'
     ]);
 
     grunt.registerTask('report', [
@@ -312,6 +360,11 @@ module.exports = function (grunt) {
         'default',
         'csslint'<% if (includePlato) { %>,
         'plato'<% } %>
+    ]);
+
+    grunt.registerTask('sync', [
+        'browser_sync',
+        'watch'
     ]);
 
     grunt.registerTask('travis', [

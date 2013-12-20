@@ -1,7 +1,7 @@
 {
   "name": "<%= _.slugify(themeName) %>",
   "version": "0.0.1",
-  "description": "<%= _.slugify(themeName) %> is a WordPress starter theme based on HTML5 Boilerplate & Roots",
+  "description": "<%= _.slugify(themeName) %> is a WordPress theme based on éGzpo",
   "homepage": "https://github.com/<%= _.slugify(userName) %>/<%= _.slugify(themeName) %>",
   "bugs": "https://github.com/<%= _.slugify(userName) %>/<%= _.slugify(themeName) %>/issues",
   "author": {
@@ -26,6 +26,8 @@
     "grunt-contrib-imagemin": "0.1.4",
     "grunt-contrib-watch": "~0.5.1",
     "grunt-contrib-csslint": "~0.2.0",
+    "grunt-browser-sync": "~0.3.7",
+    "grunt-string-replace": "~0.2.7",
     "grunt-wp-assets": "~0.1.6",
     "grunt-autoprefixer": "~0.5.0",
     "grunt-csso": "~0.5.0",<% if (includeModernizr) { %>
