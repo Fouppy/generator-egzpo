@@ -37,7 +37,7 @@ module.exports = function (grunt) {
             },
             js: {
                 files: ['<%%= jshint.all %>'],
-                tasks: ['uglify', 'newer:jshint']
+                tasks: ['uglify:dist', 'newer:jshint']
             },
             livereload: {
                 options: {
@@ -51,7 +51,7 @@ module.exports = function (grunt) {
         },
 
         // Synchronize all connected browsers
-        browser_sync: {
+        'browser_sync': {
             files: {
                 src : [
                     '<%%= yeoman.dist %>/assets/css/{,*/}*.css',
