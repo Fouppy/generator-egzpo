@@ -30,7 +30,7 @@
     "yeoman-generator": "~0.14.2"
   },
   "devDependencies": {
-    "mocha": "~1.15.1"
+    "mocha": "~1.16.1"
   },
   "peerDependencies": {
     "yo": ">=1.0.0"
