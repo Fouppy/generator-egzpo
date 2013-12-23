@@ -340,7 +340,7 @@ module.exports = function (grunt) {
     grunt.registerTask('default', [
         'clean',
         'concurrent:dist',
-        'autoprefixer',
+        'autoprefixer:dist',
         'copy',
         'string-replace:dist'
     ]);
@@ -348,7 +348,7 @@ module.exports = function (grunt) {
     grunt.registerTask('prod', [
         'clean',
         'concurrent:prod',
-        'autoprefixer',
+        'autoprefixer:prod',
         'csso',
         'copy',
         'version',
