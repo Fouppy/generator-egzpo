@@ -69,32 +69,6 @@ module.exports = function (grunt) {
             }
         },
 
-        // Conditionnally load livereload and browserSync scripts. Configure ports if needed
-        'string-replace': {
-            dist: {
-                files: {
-                    '<%%= yeoman.dist %>/base.php': '<%%= yeoman.app %>/base.php'
-                },
-                options: {
-                    replacements: [{
-                        pattern: '<!-- browserSync -->',
-                        replacement: '<script src="http://<%%= yeoman.ip %>:35729/livereload.js"></script><script src="http://<%%= yeoman.ip %>:3000/socket.io/socket.io.js"></script><script src="http://<%%= yeoman.ip %>:3001/browser-sync-client.min.js"></script>'
-                    }]
-                }
-            },
-            prod: {
-                files: {
-                  '<%%= yeoman.dist %>/base.php': '<%%= yeoman.app %>/base.php'
-                },
-                options: {
-                    replacements: [{
-                        pattern: '<!-- browserSync -->',
-                        replacement: ''
-                    }]
-                }
-            }
-        },
-
         // Empties folders to start fresh
         clean: {
             dist: {
@@ -301,6 +275,32 @@ module.exports = function (grunt) {
                         'jquery.min.js'
                     ]
                 }]
+            },
+            base: {
+                expand: true,
+                cwd: '<%%= yeoman.app %>',
+                dest: '<%%= yeoman.dist %>',
+                src: [
+                    'base.php'
+                ],
+                options: {
+                    process: function (content, srcpath) {
+                        return content.replace('<!-- browserSync -->',grunt.template.process('<script src="http://<%%= yeoman.ip %>:35729/livereload.js"></script><script src="http://<%%= yeoman.ip %>:3000/socket.io/socket.io.js"></script><script src="http://<%%= yeoman.ip %>:3001/browser-sync-client.min.js"></script>'));
+                    }
+                }
+            },
+            prod: {
+                expand: true,
+                cwd: '<%%= yeoman.app %>',
+                dest: '<%%= yeoman.dist %>',
+                src: [
+                    'base.php'
+                ],
+                options: {
+                    process: function (content, srcpath) {
+                        return content.replace('<!-- browserSync -->','');
+                    }
+                }
             }
         },
 <% if (includePlato) { %>
@@ -341,8 +341,8 @@ module.exports = function (grunt) {
         'clean',
         'concurrent:dist',
         'autoprefixer:dist',
-        'copy',
-        'string-replace:dist'
+        'copy:dist',
+        'copy:base'
     ]);
 
     grunt.registerTask('prod', [
@@ -350,9 +350,9 @@ module.exports = function (grunt) {
         'concurrent:prod',
         'autoprefixer:prod',
         'csso',
-        'copy',
+        'copy:dist',
         'version',
-        'string-replace:prod'
+        'copy:prod'
     ]);
 
     grunt.registerTask('report', [

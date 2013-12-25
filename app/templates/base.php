@@ -26,8 +26,6 @@
   </div><!-- /.wrap -->
 
   <?php get_template_part('templates/footer'); ?>
-
   <!-- browserSync -->
-
 </body>
 </html>
