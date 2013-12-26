@@ -1,7 +1,10 @@
 /* STRUCTURE */
 .container {
-	width: $pageWidth;
+	width: 100%;
 	margin: 20px auto;
+	@include breakpoint(biggie) {
+		width: $pageWidth;
+	}
 }
 
 /* HEADER */
