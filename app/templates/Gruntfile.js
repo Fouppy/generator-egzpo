@@ -126,14 +126,13 @@ module.exports = function (grunt) {
                 options: {
                     cssDir: '<%%= yeoman.dist %>/assets/css',
                     outputStyle: 'nested',
-                    debugInfo: true
+                    sourcemap: true
                 }
             },
             prod: {
                 options: {
                     cssDir: '<%%= yeoman.tmp %>/assets/css',
-                    outputStyle: 'compressed',
-                    debugInfo: false
+                    outputStyle: 'compressed'
                 }
             }
         },
@@ -145,7 +144,8 @@ module.exports = function (grunt) {
                     expand: true,
                     cwd: '<%%= yeoman.dist %>/assets/css',
                     src: '{,*/}*.css',
-                    dest: '<%%= yeoman.dist %>/assets/css'
+                    dest: '<%%= yeoman.dist %>/assets/css',
+                    map: true
                 }]
             },
             prod: {
