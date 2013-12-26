@@ -33,11 +33,11 @@ module.exports = function (grunt) {
         watch: {
             compass: {
                 files: ['<%%= yeoman.app %>/sass/{,*/}*.{scss,sass}'],
-                tasks: ['compass:dist', 'autoprefixer:dist']
+                tasks: ['reloadCss']
             },
             js: {
                 files: ['<%%= jshint.all %>'],
-                tasks: ['uglify:dist', 'newer:jshint']
+                tasks: ['reloadJs']
             },
             livereload: {
                 options: {
@@ -316,59 +316,140 @@ module.exports = function (grunt) {
                     ]
                 }
             }
-        },<% } %>
-
-        // Run some tasks in parallel to speed up build process
-        concurrent: {
-            dist: [
-                'uglify:dist',
-                'compass:dist',<% if (includeModernizr) { %>
-                'modernizr',<% } %>
-                'svgmin',
-                'imagemin'
-            ],
-            prod: [
-                'uglify:prod',
-                'compass:prod',<% if (includeModernizr) { %>
-                'modernizr',<% } %>
-                'svgmin',
-                'imagemin'
-            ]
-        }
+        }<% } %>
+        
     });
 
-    grunt.registerTask('default', [
-        'clean',
-        'concurrent:dist',
-        'autoprefixer:dist',
-        'copy:dist',
-        'copy:base'
-    ]);
+    grunt.registerTask('default', [], function () {
 
-    grunt.registerTask('prod', [
-        'clean',
-        'concurrent:prod',
-        'autoprefixer:prod',
-        'csso',
-        'copy:dist',
-        'version',
-        'copy:prod'
-    ]);
+        // load plugins for default task
+        grunt.loadNpmTasks('grunt-contrib-clean');
+        grunt.loadNpmTasks('grunt-contrib-uglify');
+        grunt.loadNpmTasks('grunt-contrib-compass');<% if (includeModernizr) { %>
+        grunt.loadNpmTasks('grunt-modernizr');<% } %>
+        grunt.loadNpmTasks('grunt-svgmin');
+        grunt.loadNpmTasks('grunt-contrib-imagemin');
+        grunt.loadNpmTasks('grunt-autoprefixer');
+        grunt.loadNpmTasks('grunt-contrib-copy');
 
-    grunt.registerTask('report', [
-        'newer:jshint',
-        'default',
-        'csslint'<% if (includePlato) { %>,
-        'plato'<% } %>
-    ]);
+        // execute the task
+        grunt.task.run(
+            'clean',
+            'uglify:dist',
+            'compass:dist',<% if (includeModernizr) { %>
+            'modernizr',<% } %>
+            'svgmin',
+            'imagemin',
+            'autoprefixer:dist',
+            'copy:dist',
+            'copy:base'
+        );
 
-    grunt.registerTask('sync', [
-        'browser_sync',
-        'watch'
-    ]);
+    });
 
-    grunt.registerTask('travis', [
-        'jshint',
-        'csslint'
-    ]);
+    grunt.registerTask('prod', [], function () {
+
+        // load plugins for prod task
+        grunt.loadNpmTasks('grunt-contrib-clean');
+        grunt.loadNpmTasks('grunt-contrib-uglify');
+        grunt.loadNpmTasks('grunt-contrib-compass');<% if (includeModernizr) { %>
+        grunt.loadNpmTasks('grunt-modernizr');<% } %>
+        grunt.loadNpmTasks('grunt-svgmin');
+        grunt.loadNpmTasks('grunt-contrib-imagemin');
+        grunt.loadNpmTasks('grunt-autoprefixer');
+        grunt.loadNpmTasks('grunt-csso');
+        grunt.loadNpmTasks('grunt-wp-assets');
+        grunt.loadNpmTasks('grunt-contrib-copy');
+
+        // execute the task
+        grunt.task.run(
+            'clean',
+            'uglify:prod',
+            'compass:prod',<% if (includeModernizr) { %>
+            'modernizr',<% } %>
+            'svgmin',
+            'imagemin',
+            'autoprefixer:prod',
+            'csso',
+            'copy:dist',
+            'version',
+            'copy:prod'
+        );
+
+    });
+
+    grunt.registerTask('report', [], function () {
+
+        // load plugins for report task
+        grunt.loadNpmTasks('grunt-newer');
+        grunt.loadNpmTasks('grunt-contrib-jshint');
+        grunt.loadNpmTasks('grunt-contrib-csslint');<% if (includePlato) { %>
+        grunt.loadNpmTasks('grunt-plato');<% } %>
+
+        // execute the task
+        grunt.task.run(
+            'newer:jshint',
+            'default',
+            'csslint'<% if (includePlato) { %>,
+            'plato'<% } %>
+        );
+
+    });
+
+    grunt.registerTask('sync', [], function () {
+
+        // load plugins for sync task
+        grunt.loadNpmTasks('grunt-browser-sync');
+        grunt.loadNpmTasks('grunt-contrib-watch');
+
+        // execute the task
+        grunt.task.run(
+            'browser_sync',
+            'watch'
+        );
+
+    });
+
+    grunt.registerTask('reloadCss', [], function () {
+
+        // load plugins for reloadCss task
+        grunt.loadNpmTasks('grunt-contrib-compass');
+        grunt.loadNpmTasks('grunt-autoprefixer');
+
+        // execute the task
+        grunt.task.run(
+            'compass:dist',
+            'autoprefixer:dist'
+        );
+
+    });
+
+    grunt.registerTask('reloadJs', [], function () {
+
+        // load plugins for reloadJs task
+        grunt.loadNpmTasks('grunt-contrib-uglify');
+        grunt.loadNpmTasks('grunt-newer');
+        grunt.loadNpmTasks('grunt-contrib-jshint');
+
+        // execute the task
+        grunt.task.run(
+            'uglify:dist',
+            'newer:jshint'
+        );
+
+    });
+
+    grunt.registerTask('travis', [], function () {
+
+        // load plugins for travis task
+        grunt.loadNpmTasks('grunt-contrib-jshint');
+        grunt.loadNpmTasks('grunt-contrib-csslint');
+
+        // execute the task
+        grunt.task.run(
+            'csslint',
+            'jshint'
+        );
+
+    });
 };
