@@ -9,9 +9,6 @@
 
 module.exports = function (grunt) {
 
-    // Load grunt tasks automatically
-    require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
-
     // Time how long tasks take. Can help when optimizing build times
     require('time-grunt')(grunt);
 
