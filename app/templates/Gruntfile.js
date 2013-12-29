@@ -273,7 +273,7 @@ module.exports = function (grunt) {
                     ]
                 }]
             },
-            base: {
+            baseDist: {
                 expand: true,
                 cwd: '<%%= yeoman.app %>',
                 dest: '<%%= yeoman.dist %>',
@@ -286,7 +286,7 @@ module.exports = function (grunt) {
                     }
                 }
             },
-            prod: {
+            baseProd: {
                 expand: true,
                 cwd: '<%%= yeoman.app %>',
                 dest: '<%%= yeoman.dist %>',
@@ -296,6 +296,19 @@ module.exports = function (grunt) {
                 options: {
                     process: function (content, srcpath) {
                         return content.replace('<!-- browserSync -->','');
+                    }
+                }
+            },
+            configDist: {
+                expand: true,
+                cwd: '<%%= yeoman.app %>/lib',
+                dest: '<%%= yeoman.dist %>/lib',
+                src: [
+                    'config.php'
+                ],
+                options: {
+                    process: function (content, srcpath) {
+                        return content.replace('add_theme_support(\'rewrites\');','// add_theme_support(\'rewrites\');');
                     }
                 }
             }
@@ -339,7 +352,8 @@ module.exports = function (grunt) {
             'imagemin',
             'autoprefixer:dist',
             'copy:dist',
-            'copy:base'
+            'copy:baseDist',
+            'copy:configDist'
         );
 
     });
@@ -370,7 +384,7 @@ module.exports = function (grunt) {
             'csso',
             'copy:dist',
             'version',
-            'copy:prod'
+            'copy:baseProd'
         );
 
     });
