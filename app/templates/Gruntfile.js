@@ -436,9 +436,9 @@ module.exports = function (grunt) {
 
     });
 
-    grunt.registerTask('travis', [], function () {
+    grunt.registerTask('test', [], function () {
 
-        // load plugins for travis task
+        // load plugins for test task
         grunt.loadNpmTasks('grunt-contrib-jshint');
         grunt.loadNpmTasks('grunt-contrib-csslint');
 
