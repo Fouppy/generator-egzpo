@@ -57,11 +57,6 @@ EgzpoGenerator.prototype.askFor = function askFor() {
     name: 'includeHumans',
     message: 'Would you like to include humans.txt?',
     default: true
-  }, {
-    type: 'confirm',
-    name: 'windows',
-    message: 'Are you using a VM on Windows?',
-    default: true
   }];
 
   this.prompt(prompts, function (props) {
@@ -74,7 +69,6 @@ EgzpoGenerator.prototype.askFor = function askFor() {
     this.includePlato = props.includePlato;
     this.includeLogo = props.includeLogo;
     this.includeHumans = props.includeHumans;
-    this.windows = props.windows;
 
     cb();
   }.bind(this));
