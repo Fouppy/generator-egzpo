@@ -23,6 +23,3 @@ function egzpo_setup() {
   add_editor_style('/assets/css/editor-style.css');
 }
 add_action('after_setup_theme', 'egzpo_setup');
-
-// Backwards compatibility for older than PHP 5.3.0
-if (!defined('__DIR__')) { define('__DIR__', dirname(__FILE__)); }
