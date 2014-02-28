@@ -6,7 +6,7 @@
  * /theme/assets/css/app.css
  *
  * Enqueue scripts in the following order:
- * 1. jquery-1.10.2.min.js via Google CDN
+ * 1. jquery-1.11.0.min.js via Google CDN
  * 2. /theme/assets/js/vendor/modernizr-2.6.2.min.js
  * 3. /theme/assets/js/scripts.min.js (in footer)
  */
@@ -18,7 +18,7 @@ function egzpo_scripts() {
   // It's kept in the header instead of footer to avoid conflicts with plugins.
   if (!is_admin() && current_theme_supports('jquery-cdn')) {
     wp_deregister_script('jquery');
-    wp_register_script('jquery', '//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js', array(), null, false);
+    wp_register_script('jquery', '//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js', array(), null, false);
     add_filter('script_loader_src', 'egzpo_jquery_local_fallback', 10, 2);
   }
 
