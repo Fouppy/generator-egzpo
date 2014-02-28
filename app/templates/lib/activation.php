@@ -47,7 +47,6 @@ function egzpo_get_theme_activation_options() {
 
 function egzpo_theme_activation_options_render_page() { ?>
   <div class="wrap">
-    <?php screen_icon(); ?>
     <h2><?php printf(__('%s Theme Activation', 'egzpo'), wp_get_theme()); ?></h2>
     <?php settings_errors(); ?>
 
