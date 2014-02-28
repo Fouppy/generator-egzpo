@@ -48,7 +48,7 @@ If you'd like to get to know Yeoman better and meet some of his friends, [Grunt]
 
 
 ## Contributing
-In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [grunt][http://gruntjs.com/].
+In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [grunt](http://gruntjs.com/).
 
 
 ## Authors
@@ -60,7 +60,7 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 
 ## License
-Copyright (c) 2013 Frédéric Honoré, contributors.
+Copyright (c) 2013-2014 Frédéric Honoré, contributors.
 Released under the MIT license
 
 ***
