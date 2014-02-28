@@ -1,5 +1,12 @@
+before_script: 
+- npm install -g bower
+deploy: 
+  provider: npm
+  on: 
+    tags: true
+  api_key: 
+    secure: ThqQRcvpc+D6GRzV/YhvHDOZ3toyjjr0u1z8aAr5cz/QVB63mTqflquuA0iL7VsgcxxqN6i+QwKJTRGtoAKudgsTl8AQcYZfc6/pe8qsbHIwE3QgpRMP8RcjW0+Zg022B2Kli23j9SEatviiCdpMgLgaEgxi0FWksXT/KR1I0BU=
+  email: fred.honore@gmail.com
+node_js: 
+- "0.10"
 language: node_js
-node_js:
-  - '0.10'
-before_script:
-  - npm install -g bower
