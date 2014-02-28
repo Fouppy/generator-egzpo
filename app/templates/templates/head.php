@@ -15,7 +15,7 @@
     <% if (includeLogo) { %>
 	<link href='<?php echo get_stylesheet_directory_uri(); ?>/assets/img/logo.svg' rel='logo' type='image/svg' />
     <% } %>
-	<link rel="alternate" type="application/rss+xml" title="<?php echo get_bloginfo('name'); ?> Feed" href="<?php echo home_url(); ?>/feed/">
+	<link rel="alternate" type="application/rss+xml" title="<?php echo get_bloginfo('name'); ?> Feed" href="<?php echo esc_url(get_feed_link()); ?>">
 
 	<meta content='false' http-equiv='imagetoolbar' />
 	<meta content='éGz - http://egztudio.com/' name='author' />
