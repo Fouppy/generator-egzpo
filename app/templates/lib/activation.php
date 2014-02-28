@@ -85,19 +85,6 @@ function egzpo_theme_activation_options_render_page() { ?>
           </td>
         </tr>
 
-        <tr valign="top"><th scope="row"><?php _e('Change uploads folder?', 'egzpo'); ?></th>
-          <td>
-            <fieldset><legend class="screen-reader-text"><span><?php _e('Update uploads folder?', 'egzpo'); ?></span></legend>
-              <select name="egzpo_theme_activation_options[change_uploads_folder]" id="change_uploads_folder">
-                <option selected="selected" value="true"><?php echo _e('Yes', 'egzpo'); ?></option>
-                <option value="false"><?php echo _e('No', 'egzpo'); ?></option>
-              </select>
-              <br>
-              <small class="description"><?php printf(__('Change uploads folder to /media/ instead of /wp-content/uploads/', 'egzpo')); ?></small>
-            </fieldset>
-          </td>
-        </tr>
-
         <tr valign="top"><th scope="row"><?php _e('Create navigation menu?', 'egzpo'); ?></th>
           <td>
             <fieldset><legend class="screen-reader-text"><span><?php _e('Create navigation menu?', 'egzpo'); ?></span></legend>
@@ -183,17 +170,6 @@ function egzpo_theme_activation_action() {
       global $wp_rewrite;
       $wp_rewrite->set_permalink_structure('/%postname%/');
       flush_rewrite_rules();
-    }
-  }
-
-  if ($egzpo_theme_activation_options['change_uploads_folder'] === 'true') {
-    $egzpo_theme_activation_options['change_uploads_folder'] = false;
-
-    update_option('uploads_use_yearmonth_folders', 0);
-    if (!is_multisite()) {
-      update_option('upload_path', 'media');
-    } else {
-      update_option('upload_path', '');
     }
   }
 
