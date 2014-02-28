@@ -4,7 +4,7 @@
   "dependencies": {<% if (includeModernizr) { %>
     "modernizr": "~2.7.1",<% } %>
     "jquery": "~1.11.0",
-    "scss-normalize": "~2.1.3",
+    "normalize-scss": "~3.0.0",
     "typeplate": "~1.1.2"
   }
 }
