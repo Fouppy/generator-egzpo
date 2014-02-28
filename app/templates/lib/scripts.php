@@ -11,7 +11,6 @@
  * 3. /theme/assets/js/scripts.min.js (in footer)
  */
 function egzpo_scripts() {
-  wp_enqueue_style('open_sans', 'http://fonts.googleapis.com/css?family=Source+Sans+Pro', false, null);
   wp_enqueue_style('egzpo_main', get_template_directory_uri() . '/assets/css/app.css', false);
 
   // jQuery is loaded using the same method from HTML5 Boilerplate:
