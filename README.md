@@ -4,7 +4,6 @@
 [![Dependency Status](https://david-dm.org/Fouppy/generator-egzpo.png)](https://david-dm.org/Fouppy/generator-egzpo)
 [![devDependency Status](https://david-dm.org/Fouppy/generator-egzpo/dev-status.png)](https://david-dm.org/Fouppy/generator-egzpo#info=devDependencies)
 [![NPM version](https://badge.fury.io/js/generator-egzpo.png)](http://badge.fury.io/js/generator-egzpo)
-[![Coverage Status](https://coveralls.io/repos/Fouppy/generator-egzpo/badge.png)](https://coveralls.io/r/Fouppy/generator-egzpo)
 
 A generator for [Yeoman](http://yeoman.io).
 
