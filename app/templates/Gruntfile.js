@@ -211,16 +211,19 @@ module.exports = function (grunt) {
         // Generates a custom Modernizr build that includes only the tests you
         // reference in your app
         modernizr: {
-            devFile: 'bower_components/modernizr/modernizr.js',
-            outputFile: '<%%= yeoman.dist %>/assets/js/vendor/modernizr-custom.js',
-            files: [
-                '<%%= yeoman.dist %>/assets/js/{,*/}*.js',
-                '<%%= yeoman.dist %>/assets/css/{,*/}*.css',
-                '!Gruntfile.js',
-                '!<%%= yeoman.app %>/*',
-                '!<%%= yeoman.dist %>/assets/js/vendor/*'
-            ],
-            uglify: true
+            dist : {
+                devFile: 'bower_components/modernizr/modernizr.js',
+                outputFile: '<%= yeoman.dist %>/assets/js/vendor/modernizr-custom.js',
+                files : {
+                    src : [
+                        '<%= yeoman.dist %>/assets/js/{,*/}*.js',
+                        '<%= yeoman.dist %>/assets/css/{,*/}*.css',
+                        '!Gruntfile.js',
+                        '!<%= yeoman.app %>/*',
+                        '!<%= yeoman.dist %>/assets/js/vendor/*'
+                    ]
+                }
+            }
         },<% } %>
 
         // Compress css files
