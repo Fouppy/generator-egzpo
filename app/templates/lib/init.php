@@ -20,6 +20,6 @@ function egzpo_setup() {
   // add_theme_support('post-formats', array('aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat'));
 
   // Tell the TinyMCE editor to use a custom stylesheet
-  add_editor_style('/assets/css/editor-style.css');
+  // add_editor_style('/assets/css/editor-style.css');
 }
 add_action('after_setup_theme', 'egzpo_setup');
