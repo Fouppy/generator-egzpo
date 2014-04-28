@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-08 16:55+0100\n"
+"POT-Creation-Date: 2014-04-28 12:01+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -13,7 +13,7 @@ msgstr ""
 "X-Poedit-KeywordsList: _;gettext;gettext_noop;__;_e\n"
 "X-Poedit-Basepath: ../\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 1.5.7\n"
+"X-Generator: Poedit 1.6.4\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPath-1: ./templates\n"
@@ -21,25 +21,28 @@ msgstr ""
 
 #: 404.php:4
 msgid "Sorry, but the page you were trying to view does not exist."
-msgstr ""
+msgstr "Désolé, mais la page à laquelle vous souhaitez accéder n'existe pas."
 
 #: 404.php:7
 msgid "It looks like this was the result of either:"
-msgstr ""
+msgstr "Plusieurs raisons peuvent l'expliquer :"
 
 #: 404.php:9
 msgid "a mistyped address"
-msgstr ""
+msgstr "une adresse mal renseignée"
 
 #: 404.php:10
 msgid "an out-of-date link"
-msgstr ""
+msgstr "un lien qui ne fonctionne plus"
 
-#: base.php:4
+#: base.php:6
 msgid ""
 "You are using an <strong>outdated</strong> browser. Please <a href=\"http://"
 "browsehappy.com/\">upgrade your browser</a> to improve your experience."
 msgstr ""
+"Vous utilisez un navigateur <strong>dépassé</strong>. Merci de <a href="
+"\"http://browsehappy.com/\">mettre à jour votre navigateur</a> pour "
+"améliorer votre expérience de navigation."
 
 #: index.php:5
 msgid "Sorry, no results were found."
@@ -57,79 +60,78 @@ msgstr "Articles plus récents &rarr;"
 msgid "Theme Activation"
 msgstr "Activation du thème"
 
-#: lib/activation.php:51
+#: lib/activation.php:50
 #, php-format
 msgid "%s Theme Activation"
 msgstr "Activation du thème %s"
 
-#: lib/activation.php:62 lib/activation.php:64
+#: lib/activation.php:52
+msgid ""
+"These settings are optional and should usually be used only on a fresh "
+"installation"
+msgstr ""
+"Ces paramètres sont optionnels et ne devraient être utilisés que pour une "
+"nouvelle installation."
+
+#: lib/activation.php:59 lib/activation.php:62
 msgid "Create static front page?"
 msgstr "Créer une page d'accueil ?"
 
-#: lib/activation.php:66 lib/activation.php:79 lib/activation.php:92
-#: lib/activation.php:105 lib/activation.php:118
+#: lib/activation.php:64 lib/activation.php:76 lib/activation.php:88
+#: lib/activation.php:100
 msgid "Yes"
 msgstr "Oui"
 
-#: lib/activation.php:67 lib/activation.php:80 lib/activation.php:93
-#: lib/activation.php:106 lib/activation.php:119
+#: lib/activation.php:65 lib/activation.php:77 lib/activation.php:89
+#: lib/activation.php:101
 msgid "No"
 msgstr "Non"
 
-#: lib/activation.php:70
+#: lib/activation.php:67
 msgid "Create a page called Home and set it to be the static front page"
 msgstr "Créer une page \"Home\" et la définir comme page d'accueil statique ?"
 
-#: lib/activation.php:75
+#: lib/activation.php:71
 msgid "Change permalink structure?"
 msgstr "Modifier la structure des permaliens ?"
 
-#: lib/activation.php:77
+#: lib/activation.php:74
 msgid "Update permalink structure?"
 msgstr "Mettre à jour la structure des permaliens ?"
 
-#: lib/activation.php:83
+#: lib/activation.php:79
 msgid "Change permalink structure to /&#37;postname&#37;/"
 msgstr "Changer la structure permaliens en /&#37;postname&#37;/"
 
-#: lib/activation.php:88
-msgid "Change uploads folder?"
-msgstr "Changer le dossier d'upload ?"
-
-#: lib/activation.php:90
-msgid "Update uploads folder?"
-msgstr "Mettre à jour le dossier d'upload ?"
-
-#: lib/activation.php:96
-#, fuzzy
-msgid "Change uploads folder to /media/ instead of /wp-content/uploads/"
-msgstr ""
-"Changer le dossier d'upload en /assets/ à la place de /wp-content/uploads/"
-
-#: lib/activation.php:101 lib/activation.php:103
+#: lib/activation.php:83 lib/activation.php:86
 msgid "Create navigation menu?"
 msgstr "Créer un menu de navigation ?"
 
-#: lib/activation.php:109
+#: lib/activation.php:91
 msgid "Create the Primary Navigation menu and set the location"
 msgstr "Créer le menus de navigation primaire et définir sa position"
 
-#: lib/activation.php:114 lib/activation.php:116
+#: lib/activation.php:95 lib/activation.php:98
 msgid "Add pages to menu?"
 msgstr "Ajouter les pages au menu ?"
 
-#: lib/activation.php:122
+#: lib/activation.php:103
 msgid "Add all current published pages to the Primary Navigation"
 msgstr ""
 "Ajouter toutes les pages actuellement publiées à la navigation primaire"
 
-#: lib/cleanup.php:210
-msgid "Continued"
-msgstr "Suite"
+#: lib/activation.php:126 lib/activation.php:147
+msgid "Home"
+msgstr "Accueil"
 
+#: lib/activation.php:173 lib/activation.php:176 lib/activation.php:190
 #: lib/init.php:11
 msgid "Primary Navigation"
 msgstr "Navigation Primaire"
+
+#: lib/cleanup.php:193
+msgid "Continued"
+msgstr "Suite"
 
 #: lib/titles.php:10
 msgid "Latest Posts"
@@ -161,14 +163,12 @@ msgid "Search Results for %s"
 msgstr "Résultats de la recherche pour %s"
 
 #: lib/titles.php:33
-#, fuzzy
 msgid "Not Found"
-msgstr "Fichier non trouvé"
+msgstr "Non trouvée"
 
 #: lib/widgets.php:8
-#, fuzzy
 msgid "Primary"
-msgstr "Barre latérale Primaire"
+msgstr "Primaire"
 
 #: lib/widgets.php:17
 msgid "Footer"
@@ -269,15 +269,26 @@ msgstr "Pages :"
 
 #: templates/entry-meta.php:2
 msgid "By"
-msgstr ""
+msgstr "Par"
 
-#: templates/searchform.php:2
+#: templates/searchform.php:2 templates/searchform.php:4
+msgid "Search"
+msgstr "Recherche"
+
+#: templates/searchform.php:3
 msgid "Search for:"
 msgstr "Rechercher pour :"
 
-#: templates/searchform.php:3 templates/searchform.php:4
-msgid "Search"
-msgstr "Recherche"
+#~ msgid "Change uploads folder?"
+#~ msgstr "Changer le dossier d'upload ?"
+
+#~ msgid "Update uploads folder?"
+#~ msgstr "Mettre à jour le dossier d'upload ?"
+
+#, fuzzy
+#~ msgid "Change uploads folder to /media/ instead of /wp-content/uploads/"
+#~ msgstr ""
+#~ "Changer le dossier d'upload en /assets/ à la place de /wp-content/uploads/"
 
 #~ msgid ""
 #~ "The page you are looking for might have been removed, had its name "
