@@ -48,7 +48,7 @@ module.exports = function (grunt) {
         },
 
         // Synchronize all connected browsers
-        'browser_sync': {
+        browserSync: {
             files: {
                 src : [
                     '<%%= yeoman.dist %>/assets/css/{,*/}*.css',
@@ -419,7 +419,7 @@ module.exports = function (grunt) {
 
         // execute the task
         grunt.task.run(
-            'browser_sync',
+            'browserSync',
             'watch'
         );
 
