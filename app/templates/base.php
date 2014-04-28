@@ -13,7 +13,7 @@
   ?>
 
   <div class="wrap container" role="document">
-    <div class="content grid">
+    <div class="content grid row">
       <main class="main <?php echo egzpo_main_class(); ?>" role="main">
         <?php include egzpo_template_path(); ?>
       </main><!-- /.main -->

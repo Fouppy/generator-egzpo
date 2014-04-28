@@ -19,10 +19,10 @@ define('POST_EXCERPT_LENGTH', 40); // length in words for excerpt_length filter 
 function egzpo_main_class() {
   if (egzpo_display_sidebar()) {
     // Classes on pages with the sidebar
-    $class = 'col-2-3';
+    $class = 'column-12-hand column-8-desk';
   } else {
     // Classes on full width pages
-    $class = 'col-1';
+    $class = 'column-12-hand';
   }
 
   return $class;
@@ -32,7 +32,7 @@ function egzpo_main_class() {
  * .sidebar classes
  */
 function egzpo_sidebar_class() {
-  return 'col-1-3';
+  return 'column-12-hand column-4-desk';
 }
 
 /**
