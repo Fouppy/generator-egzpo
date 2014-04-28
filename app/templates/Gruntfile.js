@@ -387,7 +387,8 @@ module.exports = function (grunt) {
             'csso',
             'copy:dist',
             'version',
-            'copy:baseProd'
+            'copy:baseProd',
+            'copy:configDist'
         );
 
     });
