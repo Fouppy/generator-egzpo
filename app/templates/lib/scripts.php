@@ -7,7 +7,7 @@
  *
  * Enqueue scripts in the following order:
  * 1. jquery-1.11.0.min.js via Google CDN
- * 2. /theme/assets/js/vendor/modernizr-2.6.2.min.js
+ * 2. /theme/assets/js/vendor/modernizr-custom.js
  * 3. /theme/assets/js/scripts.min.js (in footer)
  */
 function egzpo_scripts() {
