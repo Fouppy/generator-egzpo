@@ -51,7 +51,7 @@
         <?php if (is_user_logged_in()) : ?>
           <p>
             <?php printf(__('Logged in as <a href="%s/wp-admin/profile.php">%s</a>.', 'egzpo'), get_option('siteurl'), $user_identity); ?>
-            <a href="<?php echo wp_logout_url(get_permalink()); ?>" title="<?php __('Log out of this account', 'egzpo'); ?>"><?php _e('Log out &raquo;', 'egzpo'); ?></a>
+            <a href="<?php echo wp_logout_url(get_permalink()); ?>" title="<?php _e('Log out of this account', 'egzpo'); ?>"><?php _e('Log out &raquo;', 'egzpo'); ?></a>
           </p>
         <?php else : ?>
           <label for="author"><?php _e('Name', 'egzpo'); if ($req) _e(' (required)', 'egzpo'); ?></label>
