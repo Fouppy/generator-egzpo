@@ -213,14 +213,14 @@ module.exports = function (grunt) {
         modernizr: {
             dist : {
                 devFile: 'bower_components/modernizr/modernizr.js',
-                outputFile: '<%= yeoman.dist %>/assets/js/vendor/modernizr-custom.js',
+                outputFile: '<%%= yeoman.dist %>/assets/js/vendor/modernizr-custom.js',
                 files : {
                     src : [
-                        '<%= yeoman.dist %>/assets/js/{,*/}*.js',
-                        '<%= yeoman.dist %>/assets/css/{,*/}*.css',
+                        '<%%= yeoman.dist %>/assets/js/{,*/}*.js',
+                        '<%%= yeoman.dist %>/assets/css/{,*/}*.css',
                         '!Gruntfile.js',
-                        '!<%= yeoman.app %>/*',
-                        '!<%= yeoman.dist %>/assets/js/vendor/*'
+                        '!<%%= yeoman.app %>/*',
+                        '!<%%= yeoman.dist %>/assets/js/vendor/*'
                     ]
                 }
             }
