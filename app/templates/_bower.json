@@ -5,6 +5,6 @@
     "modernizr": "~2.8.2",<% } %>
     "jquery": "~1.11.1",
     "normalize-scss": "~3.0.1",
-    "typeplate": "~1.1.4"
+    "typeplate-starter-kit": "~1.1.4"
   }
 }
